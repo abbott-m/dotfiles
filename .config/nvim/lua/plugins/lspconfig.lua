@@ -1,26 +1,15 @@
 return {
-  { import = "lazyvim.plugins.extras.lang.typescript" },
   "neovim/nvim-lspconfig",
   opts = {
-
     servers = {
-      dockerls = {},
       docker_compose_language_service = {},
-      terraformls = {},
       templ = {},
-      pyright = {
-        settings = {},
-      },
-      tailwindcss = {
-        filetypes_exclude = { "markdown " },
-      },
       gopls = {
         keys = {
           -- Workaround for the lack of a DAP strategy in neotest-go: https://github.com/nvim-neotest/neotest-go/issues/12
           { "<leader>td", "<cmd>lua require('dap-go').debug_test()<CR>", desc = "Debug Nearest (Go)" },
         },
         settings = {
-
           gopls = {
             gofumpt = true,
             codelenses = {
@@ -59,13 +48,6 @@ return {
       },
     },
     setup = {
-      tailwindcss = function(_, opts)
-        local tw = require("lspconfig.server_configurations.tailwindcss")
-        --- @param ft string
-        opts.filetypes = vim.tbl_filter(function(ft)
-          return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
-        end, tw.default_config.filetypes)
-      end,
       gopls = function(_, opts)
         -- workaround for gopls not supporting semanticTokensProvider
         -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
@@ -84,7 +66,6 @@ return {
             end
           end
         end)
-        -- end workaround
       end,
     },
   },

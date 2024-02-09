@@ -2,8 +2,8 @@ return {
   {
     "folke/tokyonight.nvim",
     opts = {
-      sidebars = { "qf", "vista_kind", "terminal", "packer" },
       style = "night",
+      terminal_colors = true,
       styles = {
         sidebars = "transparent",
         floats = "transparent",
@@ -28,6 +28,7 @@ return {
     name = "rose-pine",
     opts = {
       styles = {
+
         sidebars = "transparent",
         floats = "transparent",
       },
