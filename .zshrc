@@ -135,3 +135,11 @@ eval "$(starship init zsh)"
 . "$HOME/.asdf/asdf.sh"
 
 wsl.exe -d wsl-vpnkit service wsl-vpnkit start
+
+# pnpm
+export PNPM_HOME="/home/dev/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
