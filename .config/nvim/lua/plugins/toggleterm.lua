@@ -2,6 +2,7 @@ return {
   "akinsho/toggleterm.nvim",
   version = "*",
   config = true,
+  border = "curved",
   keys = {
     {
       "<leader>tv",
