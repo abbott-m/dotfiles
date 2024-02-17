@@ -1,11 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/dev/dotfiles
-- /home/dev/gh/gbg/loqate-verify-jobs-microservice
-- /home/dev/gh/gbg/loqate-verify-vector
-- /home/dev/gh/gbg/loqate-verify-platform
-- /home/dev/gh/gbg/loqate-verify-devops
-- /home/dev/gh/gbg/location-gcp-governance
 startuppopupversion: 5
 customcommandshistory:
 - q
