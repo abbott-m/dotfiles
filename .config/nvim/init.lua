@@ -209,6 +209,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
     pcall(vim.api.nvim_clear_autocmds, { group = 'FileExplorer' })
   end,
 })
+
 vim.api.nvim_create_autocmd('BufEnter', {
   group = find_files_hijack_netrw,
   pattern = '*',
@@ -251,6 +252,63 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   require 'kickstart.plugins.tree',
+
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = {
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
+    },
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require('telescope').load_extension 'lazygit'
+    end,
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = true,
+    border = 'curved',
+    keys = {
+      {
+        '<leader>tv',
+        function()
+          local count = vim.v.count1
+          require('toggleterm').toggle(count, 40, vim.loop.cwd(), 'vertical')
+        end,
+        desc = 'ToggleTerm (vertical)',
+      },
+      {
+        '<leader>th',
+        function()
+          local count = vim.v.count1
+          require('toggleterm').toggle(count, 15, vim.loop.cwd(), 'horizontal')
+        end,
+        desc = 'ToggleTerm (horizontal)',
+      },
+      {
+        '<leader>tf',
+        function()
+          local count = vim.v.count1
+          require('toggleterm').toggle(count, 10, vim.loop.cwd(), 'float')
+        end,
+        desc = 'ToggleTerm (horizontal)',
+      },
+    },
+    -- {
+    --   "<leader>tt",
+    --   function()
+    --     require("toggleterm").toggle_all(true)
+    --   end,
+    --   desc = "ToggleTerm (horizontal)",
+    -- },
+  },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   {
@@ -311,14 +369,13 @@ require('lazy').setup {
     event = 'VeryLazy', -- Sets the loading event to 'VeryLazy'
     config = function() -- This is the function that runs, AFTER loading
       require('which-key').setup()
-
-      -- Document existing key chains
       require('which-key').register {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>gg'] = { name = '[G]it', _ = 'which_key_ignore' },
       }
     end,
   },
@@ -390,9 +447,8 @@ require('lazy').setup {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
-          ['file_browser'] = {
-            hijack_netrw = true,
-          },
+          ['file_browser'] = {},
+          ['lazygit'] = {},
         },
       }
 
@@ -400,6 +456,7 @@ require('lazy').setup {
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'file_browser')
+      pcall(require('telescope').load_extension, 'lazygit')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -574,7 +631,7 @@ require('lazy').setup {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -823,7 +880,8 @@ require('lazy').setup {
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'terraform', 'hcl', 'go' },
+
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
