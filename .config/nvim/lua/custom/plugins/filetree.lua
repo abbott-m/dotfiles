@@ -9,9 +9,14 @@ return {
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
   },
-  config = function()
-    require('neo-tree').setup {
-      popup_border_style = 'rounded',
-    }
-  end,
+  keys = {
+    { '<leader>ee', '<cmd>Neotree toggle<cr>', desc = '[E]xplorer' },
+  },
+  config = {
+    popup_border_style = 'rounded',
+    filesystem = {
+      follow_current_file = true,
+      hijack_netrw_behavior = 'open_default',
+    },
+  },
 }
