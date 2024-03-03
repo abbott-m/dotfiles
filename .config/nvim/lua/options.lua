@@ -35,3 +35,6 @@ vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
+
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
