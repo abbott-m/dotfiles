@@ -1,5 +1,5 @@
 require 'options'
 require 'keymaps'
 require 'bootstrap'
-require 'base.autocmd'
 require 'lazy-plugins'
+require 'base.autocmd'
