@@ -120,6 +120,8 @@ alias cx="kubectx"
 alias pbcopy="clip.exe"
 alias pbpaste="powershell.exe -command 'Get-Clipboard' | tr -d '\r' | head -n -1"
 alias p="cd ~/gh/gbg/platform"
+alias go="go1.22.0"
+alias v="vim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

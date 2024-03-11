@@ -1,7 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/dev/gh/gbg/platform/gbgplc-gcp-governance
+- /home/dev/gh/gbg/platform/location-github-governance
+- /home/dev/gh/gbg/platform/location-gcp-projects
 - /home/dev/gh/gbg/platform/location-gcp-governance
-- /home/dev/gh/gbg/gbgplc-gcp-governance
 - /home/dev/dotfiles
 startuppopupversion: 5
 customcommandshistory:
