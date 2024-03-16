@@ -11,22 +11,22 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    opts = {
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = true,
-        mini = {
-          enabled = true,
-          indentscope_color = '',
-        },
-      },
-      transparent_background = true,
-    },
     priority = 1000,
     config = function()
+      require('catppuccin').setup {
+        -- transparent_background = true,
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+          notify = true,
+          mini = {
+            enabled = true,
+            indentscope_color = '',
+          },
+        },
+      }
       vim.cmd.hi 'Comment gui=none'
       vim.cmd.colorscheme 'catppuccin'
     end,
