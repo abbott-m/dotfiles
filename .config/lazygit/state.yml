@@ -1,5 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/dev/gh/personal/treadi/treadi-terraform-tfe
+- /home/dev/gh/personal/treadi/treadi-github-terraform
 - /home/dev/dotfiles
 startuppopupversion: 5
 customcommandshistory:

@@ -8,6 +8,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 local indentation = augroup('identation', { clear = true })
+
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.go' },
   desc = 'correct tab / space size for *.go',

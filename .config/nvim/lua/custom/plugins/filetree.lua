@@ -10,7 +10,7 @@ return {
     'MunifTanjim/nui.nvim',
   },
   keys = {
-    { '<leader>ee', '<cmd>Neotree toggle<cr>', desc = '[E]xplorer' },
+    { '<leader>nt', '<cmd>Neotree toggle<cr>', desc = '[E]xplorer' },
   },
   config = {
     popup_border_style = 'rounded',
