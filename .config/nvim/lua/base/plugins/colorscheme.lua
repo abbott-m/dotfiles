@@ -14,7 +14,6 @@ return {
     priority = 1000,
     config = function()
       require('catppuccin').setup {
-        -- transparent_background = true,
         integrations = {
           cmp = true,
           gitsigns = true,
@@ -27,8 +26,13 @@ return {
           },
         },
       }
+    end,
+  },
+  {
+    'EdenEast/nightfox.nvim',
+    config = function()
       vim.cmd.hi 'Comment gui=none'
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'carbonfox'
     end,
   },
 }
