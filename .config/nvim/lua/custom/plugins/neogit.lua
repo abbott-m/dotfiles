@@ -7,6 +7,6 @@ return {
   },
   config = true,
   keys = {
-    { '<leader>ng', '<cmd>Neogit<cr>', desc = '[Neo] Git' },
+    { '<leader>ng', '<cmd>Neogit<cr>', desc = 'Git' },
   },
 }
