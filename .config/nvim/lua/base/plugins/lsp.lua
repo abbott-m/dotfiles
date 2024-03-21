@@ -4,6 +4,7 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+    'simrat39/inlay-hints.nvim',
     { 'j-hui/fidget.nvim', opts = {} },
     { 'folke/neodev.nvim', opts = {} },
   },
@@ -135,6 +136,9 @@ return { -- LSP Configuration & Plugins
       lua_ls = {
         settings = {
           Lua = {
+            hint = {
+              enable = true,
+            },
             runtime = { version = 'LuaJIT' },
             workspace = {
               checkThirdParty = false,
@@ -156,7 +160,6 @@ return { -- LSP Configuration & Plugins
         },
       },
     }
-
     require('mason').setup()
 
     local ensure_installed = vim.tbl_keys(servers or {})
@@ -174,6 +177,7 @@ return { -- LSP Configuration & Plugins
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
+
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
