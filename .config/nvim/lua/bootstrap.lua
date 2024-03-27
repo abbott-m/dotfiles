@@ -8,4 +8,12 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- vim: ts=2 sts=2 sw=2 et
+require('lazy').setup {
+  spec = {
+    { import = 'base.plugins' },
+    { import = 'custom.plugins' },
+    { import = 'custom.plugins.extras.lang.terraform' },
+    -- { import = 'lazyvim.plugins.extras.lang.go' },
+  },
+  checker = { enabled = true },
+}
