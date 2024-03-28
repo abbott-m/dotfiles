@@ -26,13 +26,14 @@ return {
           },
         },
       }
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
   {
     'EdenEast/nightfox.nvim',
     config = function()
       vim.cmd.hi 'Comment gui=none'
-      vim.cmd.colorscheme 'carbonfox'
+      -- vim.cmd.colorscheme 'carbonfox'
     end,
   },
 }

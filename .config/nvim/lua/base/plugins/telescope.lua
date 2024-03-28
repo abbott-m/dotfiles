@@ -14,34 +14,20 @@ return {
     { 'nvim-telescope/telescope-file-browser.nvim' },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-tree/nvim-web-devicons' },
+    { 'ANGkeith/telescope-terraform-doc.nvim' },
+    { 'cappyzawa/telescope-terraform.nvim' },
   },
   config = function()
-    -- Telescope is a fuzzy finder that comes with a lot of different things that
-    -- it can fuzzy find! It's more than just a "file finder", it can search
-    -- many different aspects of Neovim, your workspace, LSP, and more!
-    --
-    -- The easiest way to use telescope, is to start by doing something like:
-    --  :Telescope help_tags
-    --
-    -- After running this command, a window will open up and you're able to
-    -- type in the prompt window. You'll see a list of help_tags options and
-    -- a corresponding preview of the help.
-    --
-    -- Two important keymaps to use while in telescope are:
-    --  - Insert mode: <c-/>
-    --  - Normal mode: ?
-    --
-    -- This opens a window that shows you all of the keymaps for the current
-    -- telescope picker. This is really useful to discover what Telescope can
-    -- do as well as how to actually do it!
-
     require('telescope').setup {
-      -- pickers = {}
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
         ['file_browser'] = {},
+        ['terraform_doc'] = {
+          url_open_command = 'xdg-open',
+          latest_provider_symbol = '  ',
+        },
       },
     }
 
@@ -49,6 +35,7 @@ return {
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
     pcall(require('telescope').load_extension, 'file_browser')
+    pcall(require('telescope').load_extension, 'terraform_doc')
 
     local builtin = require 'telescope.builtin'
 
@@ -63,6 +50,7 @@ return {
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
     vim.api.nvim_set_keymap('n', '<leader>sb', ':Telescope file_browser<CR>', { noremap = true })
+    vim.api.nvim_set_keymap('n', '<leader>std', ':Telescope terraform_doc<CR>', { noremap = true })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
